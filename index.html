@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sudoku Solver</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Sudoku Solver</h1>
+  <p>Enter numbers (1-9) in the grid. Leave empty cells as blanks. Click “Solve” to fill the puzzle.</p>
+  <div id="grid" role="grid" aria-label="Sudoku grid">
+    <!-- 9x9 grid -->
+    <script>
+      const gridContainer = document.getElementById('grid');
+      for (let r = 0; r < 9; r++) {
+        const row = document.createElement('div');
+        row.className = 'row';
+        for (let c = 0; c < 9; c++) {
+          const input = document.createElement('input');
+          input.type = 'text';
+          input.maxLength = 1;
+          input.pattern = '[1-9]';
+          input.setAttribute('data-testid', `cell-${r}-${c}`);
+          input.setAttribute('aria-label', `Row ${r + 1} Column ${c + 1}`);
+          input.className = 'cell';
+          row.appendChild(input);
+        }
+        gridContainer.appendChild(row);
+      }
+    </script>
+  </div>
+  <button id="solveBtn" data-testid="solve-btn">Solve</button>
+  <script src="app.js"></script>
+</body>
+</html>
